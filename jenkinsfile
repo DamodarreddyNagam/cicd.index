@@ -1,0 +1,15 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('ci') {
+            steps {
+                sh ''''
+             docker build -t damodar .
+             docker tag damodar:latest 301712948359.dkr.ecr.ap-south-1.amazonaws.com/damodar:latest
+             docker push 301712948359.dkr.ecr.ap-south-1.amazonaws.com/damodar:latest
+             '''   
+            }
+        }
+    }
+}
